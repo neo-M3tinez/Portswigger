@@ -13,13 +13,15 @@
 
   + chức năng của trang web này hiện đầu tiên là search khi ta nhập vào 1 thông tin tìm kiếm thì nó sẽ phản hồi lại input ta đã nhập
 
-![image](https://github.com/j10nelop/m3d1r/assets/152776722/e31bd4a8-2526-4ff1-bea5-69f89eccb751)
+![343251846-e31bd4a8-2526-4ff1-bea5-69f89eccb751](https://github.com/user-attachments/assets/fa667a18-4add-4eb1-b1ba-02e8ba8cf72d)
+
 
  => ta thấy thông tin search ta nhập được reflected lại kết quả được input ta đã nhập 
 
  + bây giờ test thêm 1 thẻ tag ```<h1>hello friend</h1>``` nếu nó xử lí thẻ này tức là lỗ hổng xss có thể chèn được vào trong html qua user nhập vào chức năng đó
 
-![image](https://github.com/j10nelop/m3d1r/assets/152776722/3fb87953-fff1-42a2-a238-261fdbbcf1ac)
+![343253315-3fb87953-fff1-42a2-a238-261fdbbcf1ac](https://github.com/user-attachments/assets/c8622587-cda9-4e7e-b6fb-bead1982c72e)
+
 
 => nó không trả về tag kèm content mà nó đã xử lí tại html đó nên ta có thể chèn script tag vào hệ thống 
 
@@ -30,7 +32,7 @@ payload
 
       <script>alert("hello friend")</script>
 
-![image](https://github.com/j10nelop/m3d1r/assets/152776722/2e429c42-a5a8-4660-b47d-79bb9350e1e8)
+![343254002-2e429c42-a5a8-4660-b47d-79bb9350e1e8](https://github.com/user-attachments/assets/1adc06b8-1393-469f-861b-514f871ec470)
 
 > solution cho bài này
 
@@ -58,7 +60,8 @@ payload
 
   + ta thấy 1 số post-comment đã được lưu trữ trong trang web từ lâu
  
-![image](https://github.com/j10nelop/m3d1r/assets/152776722/af79ce4c-bc93-40d5-b63e-9fbe9f5203db)
+![343267210-af79ce4c-bc93-40d5-b63e-9fbe9f5203db](https://github.com/user-attachments/assets/432334b2-bd13-4428-849b-2f2c4b9202a0)
+
 
 
 => như thường lệ ta kiểm tra từng tính năng 1 trong trang web này có nhận tag script tag chưa được xử lí trên html không  
@@ -67,7 +70,8 @@ payload
 
 check script tag ```<h1>hello</h1>``` => chức năng Comment 
 
-![image](https://github.com/j10nelop/m3d1r/assets/152776722/0670e5e8-cedf-47ad-9d51-168975877f08)
+![343602037-0670e5e8-cedf-47ad-9d51-168975877f08](https://github.com/user-attachments/assets/82b9e022-9a78-455f-8752-23fa4f1b4702)
+
 
 => vậy ta đã dự đoán được đoạn input bị chứa mã độc xss khi ta input html tag vào hệ thống và được xử lí raw làm cho text to hơn 
 
@@ -83,7 +87,7 @@ payload:
 
 + src=x onerror : là src là địa chỉ nhưng vì không tồn tại => onerror xử lí lỗi
 
-![image](https://github.com/j10nelop/m3d1r/assets/152776722/ce1b3df0-23d8-49be-85b1-a9119f3a58a6)
+![343603409-ce1b3df0-23d8-49be-85b1-a9119f3a58a6](https://github.com/user-attachments/assets/726ce481-bffe-44d6-8839-43a88662b842)
 
 => nó sẽ hiển thị thông báo mỗi khi refesh page này -> nó khai thác nhưng user access vào page này 
 
@@ -149,7 +153,7 @@ sau khi chèn payload thì cấu trúc sẽ là thế này ```document.write('<i
 
 => svg: à một định dạng hình ảnh vector dựa trên XML được sử dụng để hiển thị đồ họa hai chiều trên web. Không giống như các định dạng hình ảnh raster (như JPEG hoặc PNG) dựa trên pixel, đồ họa vector được tạo ra bằng các hình học như điểm, đường, và hình khối, cho phép chúng mở rộng mà không bị mất chất lượng
 
-![image](https://github.com/j10nelop/Pr1vate/assets/152776722/b6eddd84-1c74-4664-9ca5-d0eb16711a18)
+![345132867-b6eddd84-1c74-4664-9ca5-d0eb16711a18](https://github.com/user-attachments/assets/1f955c5f-c344-4ac1-9e54-65bdf78020ab)
 
 => solve lab 3
 
@@ -185,7 +189,7 @@ sau khi chèn payload thì cấu trúc sẽ là thế này ```document.write('<i
    <img src=x onerror = alert()>
   ```
 
-![image](https://github.com/j10nelop/Pr1vate/assets/152776722/1ab360fb-de03-407e-ab5e-2628979d1847)
+![345507700-1ab360fb-de03-407e-ab5e-2628979d1847](https://github.com/user-attachments/assets/56f0ebad-eab8-491e-b1e4-327b083637ab)
 
 => solve lab 4 
 
@@ -217,7 +221,7 @@ $(function() {
   
 javascript:alert() là một cách sử dụng JavaScript để hiển thị một thông báo cảnh báo (alert) trên trình duyệt web
 
-![image](https://github.com/j10nelop/Pr1vate/assets/152776722/eacddf90-9bd3-479c-a1fb-bcc52eb81890)
+![345523926-eacddf90-9bd3-479c-a1fb-bcc52eb81890](https://github.com/user-attachments/assets/24727c7f-3fb8-4ad4-805a-8cc8f677ea76)
 
 => chức năng back đã bị chèn xss alert
 
