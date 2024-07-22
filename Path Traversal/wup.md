@@ -11,7 +11,8 @@
 > Relative Path Đường dẫn tương đối chỉ rõ vị trí của một tệp hoặc thư mục dựa trên thư mục hiện tại (ví dụ : /var/www/html có thể trong đó có có thể /documents/file.txt) => nên phải xác định cấu trúc thư mục và tìm
 
 
-![image](https://github.com/j10nelop/Pr1vate/assets/152776722/e09ef178-b23f-4571-9e10-b483331d8c9d)
+![347007052-e09ef178-b23f-4571-9e10-b483331d8c9d](https://github.com/user-attachments/assets/6e046ab5-11bc-4fd1-a66a-22b1f03735cc)
+
 
 + step 1: Recon
 
@@ -19,7 +20,8 @@
  
   - dấu hiệu ta có thể tìm được ở đây là img?filename = ?.jpg
  
-    ![image](https://github.com/j10nelop/Pr1vate/assets/152776722/2ff780a3-4632-4275-8dcf-c078ac8d2d5b)
+![347007675-2ff780a3-4632-4275-8dcf-c078ac8d2d5b](https://github.com/user-attachments/assets/4a2d5775-5680-45dd-8a50-3eb018570e43)
+
 
 => khi ta thay đổi parameter của filename thì ảnh trong web cũng thay đổi theo từc ta có thể tương tác với file image qua url img?filename 
 
@@ -51,7 +53,8 @@
    
     + etc/passwd: thông tin về /etc/passwd gồm user của hệ thống server
 
-![image](https://github.com/j10nelop/Pr1vate/assets/152776722/4ed46a33-7619-4fe6-a450-f4f346f9118a)
+![347048339-4ed46a33-7619-4fe6-a450-f4f346f9118a](https://github.com/user-attachments/assets/1c7f2b8b-e6c8-4d22-a802-845b91aab45c)
+
 
   => solve lab 1 
 
@@ -63,7 +66,8 @@
 
 > To solve the lab, retrieve the contents of the /etc/passwd file
 
-![image](https://github.com/j10nelop/Pr1vate/assets/152776722/304e3a6c-a597-486a-8ea7-ddd20a5f99df)
+![347121887-304e3a6c-a597-486a-8ea7-ddd20a5f99df](https://github.com/user-attachments/assets/f1c6344b-6cb3-4bae-b65e-d24f8fe66b6d)
+
 
 
 + step 1: Recon
@@ -72,7 +76,8 @@
  
   - khi test ../../../etc/passwd không hợp lệ -> vì hệ thống đã limit process directory thì chỉ (reletive-path) không hợp lệ 
  
-  ![image](https://github.com/j10nelop/Pr1vate/assets/152776722/eee5f382-32aa-4f1a-bbee-c59c2bffad92)
+![347120416-eee5f382-32aa-4f1a-bbee-c59c2bffad92](https://github.com/user-attachments/assets/51b96d65-0fe3-40fa-a19c-5ff91f3f963c)
+
 
  => ta có thể sử dụng absolute path vì nó dựa vào thư mục root để truy xuất thay vì thư mục hiện tại 
 
@@ -82,7 +87,8 @@
 
          img?filename=/etc/passwd
 
-   ![image](https://github.com/j10nelop/Pr1vate/assets/152776722/2db04a9e-ef9f-41f3-840b-ae0344eecbe1)
+![347124198-2db04a9e-ef9f-41f3-840b-ae0344eecbe1](https://github.com/user-attachments/assets/ac11e349-7162-4f2e-9774-b31dda90d77b)
+
 
 
 => solve lab 2
@@ -95,7 +101,8 @@
 
 > To solve the lab, retrieve the contents of the /etc/passwd file
 
-![image](https://github.com/j10nelop/Pr1vate/assets/152776722/86dc5821-fc7a-4dde-8d01-80648c19fd8e)
+![347125518-86dc5821-fc7a-4dde-8d01-80648c19fd8e](https://github.com/user-attachments/assets/4f0cb78d-5a8f-4478-b7d3-2df3f6f83ec3)
+
 
  
 + step 1: Recon
@@ -112,7 +119,8 @@
 
         img?filename = ..././..././..././etc/passwd
 
-  ![image](https://github.com/j10nelop/Pr1vate/assets/152776722/8d3ae387-29bd-44f6-b3cc-7a8db600d4cd)
+![347135836-8d3ae387-29bd-44f6-b3cc-7a8db600d4cd](https://github.com/user-attachments/assets/6e4b15d8-a7ba-43ed-85da-99a5851077d6)
+
 
 => ...// : hệ thông không filter trường hợp này vì (../ và / đều bị chặn ) 
 
@@ -126,7 +134,8 @@
 
 > To solve the lab, retrieve the contents of the /etc/passwd file
 
-![image](https://github.com/j10nelop/Pr1vate/assets/152776722/1531d1a1-b23f-4758-ac7c-820aff43f66a)
+![347142037-1531d1a1-b23f-4758-ac7c-820aff43f66a](https://github.com/user-attachments/assets/306b9ee1-91f2-4b82-830c-34b911af2422)
+
 
 + step 1: Recon
 
@@ -144,7 +153,8 @@
 
 => payload phải encode 2 lần 
 
-![image](https://github.com/j10nelop/Pr1vate/assets/152776722/11fec63b-b0be-430c-8e74-17e95f5a462d)
+![347143369-11fec63b-b0be-430c-8e74-17e95f5a462d](https://github.com/user-attachments/assets/c07666ce-fcb8-4892-bca8-192b1051afb1)
+
 
 => endpoint sẽ decode URL 2 lần để run trên web server 
 
@@ -159,7 +169,8 @@
 
 > To solve the lab, retrieve the contents of the /etc/passwd file.
 
-![image](https://github.com/j10nelop/Pr1vate/assets/152776722/541daed6-c227-4d71-a0d5-25d339405434)
+![347147714-541daed6-c227-4d71-a0d5-25d339405434](https://github.com/user-attachments/assets/aab1d07b-b428-4fe5-9f88-7a02bb171da2)
+
 
 + step 1: Recon
 
@@ -175,7 +186,8 @@
 
 => ta sẽ validate root path di chuyển sang thư file /etc/passwd từ nơi chứa file image 
 
-![image](https://github.com/j10nelop/Pr1vate/assets/152776722/5677ad58-f572-4095-8cb9-a36882ba6091)
+![347148885-5677ad58-f572-4095-8cb9-a36882ba6091](https://github.com/user-attachments/assets/ab15e59e-1df1-446b-a1f5-41545afac736)
+
 
 => solve lab 5 
 
@@ -188,7 +200,8 @@
 
 > To solve the lab, retrieve the contents of the /etc/passwd file
 
-![image](https://github.com/j10nelop/Pr1vate/assets/152776722/063f737f-7577-402c-aba1-bad3132839a8)
+![347149781-063f737f-7577-402c-aba1-bad3132839a8](https://github.com/user-attachments/assets/97f79468-f3e9-4d79-80c8-80e368018585)
+
 
 + step 1: Recon
 
@@ -200,7 +213,7 @@
  
         img?filename=../../../etc/passwd.jpg
 
-  ![image](https://github.com/j10nelop/Pr1vate/assets/152776722/88785933-ff15-4f1a-af43-61b715382a4c)
+ ![347151260-88785933-ff15-4f1a-af43-61b715382a4c](https://github.com/user-attachments/assets/f63bc068-6058-471b-b61f-e98a84abcb65)
 
 => có vẻ nó thấy file.jpg là file là không hợp lệ nên ta sẽ sử dụng null byte injection để ngắt strings là tên file đằng trước extension để bypass
 
@@ -210,7 +223,7 @@
 
         img?filename = ../../../etc/passwd%00.jpg 
 
-![image](https://github.com/j10nelop/Pr1vate/assets/152776722/ec73d3a0-02c0-4644-bebc-0385c76aa5c6)
+![347152188-ec73d3a0-02c0-4644-bebc-0385c76aa5c6](https://github.com/user-attachments/assets/654058d3-34ed-4199-8269-327623e41ce4)
 
 
 => %00 null byte để khi hệ thống quét xong /etc/passwd thì sẽ quét đến extension là .jpg 
